@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+	<HediffDef>
+		<defName>RM_Lactating</defName>
+		<description>lactating.</description>
+		<label>lactating</label>
+		<isBad>false</isBad>
+		<hediffClass>RealisticMilking.Hediff_Lactating</hediffClass>
+		<comps>
+			<li Class="HediffCompProperties_Disappears"/>
+		</comps>
+		<stages>
+			<li>
+				<statOffsets>
+					<RM_MilkingYieldFactor>1</RM_MilkingYieldFactor>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<HediffDef>
+		<defName>RM_LactatingDryingUp</defName>
+		<description>lactating.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<label>lactating</label>
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_Disappears"/>
+		</comps>
+		<stages>
+			<li>
+				<label>drying up</label>
+				<statOffsets>
+					<RM_MilkingYieldFactor>0.5</RM_MilkingYieldFactor>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+</Defs>

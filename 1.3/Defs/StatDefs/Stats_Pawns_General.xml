@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <StatDef>
+    <defName>RM_MilkingYieldFactor</defName>
+    <label>milking yield factor</label>
+    <description>milking yield factor</description>
+    <workerClass>RealisticMilking.StatWorker_Milkable</workerClass>
+    <category>AnimalProductivity</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <showOnAnimals>true</showOnAnimals>
+    <minValue>0</minValue>
+    <displayPriorityInCategory>3500</displayPriorityInCategory>
+  </StatDef>
+
+  <StatDef>
+    <defName>RM_LactationPeriod</defName>
+    <label>lactation period</label>
+    <description>lactation period</description>
+    <category>AnimalProductivity</category>
+    <workerClass>RealisticMilking.StatWorker_LactationPeriod</workerClass>
+    <defaultBaseValue>0</defaultBaseValue>
+    <toStringStyle>FloatMaxTwo</toStringStyle>
+    <showOnAnimals>true</showOnAnimals>
+    <minValue>0</minValue>
+    <displayPriorityInCategory>3500</displayPriorityInCategory>
+  </StatDef>
+
+  <StatDef>
+    <defName>RM_LactationDryingUpPeriod</defName>
+    <label>lactation period (drying up)</label>
+    <description>lactation period (drying up)</description>
+    <category>AnimalProductivity</category>
+    <workerClass>RealisticMilking.StatWorker_LactationPeriod</workerClass>
+    <defaultBaseValue>0</defaultBaseValue>
+    <toStringStyle>FloatMaxTwo</toStringStyle>
+    <showOnAnimals>true</showOnAnimals>
+    <minValue>0</minValue>
+    <displayPriorityInCategory>3500</displayPriorityInCategory>
+  </StatDef>
+</Defs>

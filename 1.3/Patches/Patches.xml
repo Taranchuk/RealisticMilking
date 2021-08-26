@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAddModExtension">
+				<xpath>/Defs/ThingDef[defName="Boomalope"]</xpath>
+				<value>
+					<li Class="RealisticMilking.MilkingExtension">
+						<excludeFromRealisticMilking>true</excludeFromRealisticMilking>
+					</li>
+				</value>
+			</li>
+
+			<!-- Just an example how to make animals milkable -->
+			
+			<li Class="PatchOperationSequence"> <!-- this is just to be sure that Human has comps -->
+				<operations>
+					<li Class="PatchOperationTest">
+						<xpath>Defs/ThingDef[defName="Human"]/comps</xpath>
+						<success>Invert</success>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="Human"]</xpath>
+						<value>
+							<comps></comps>
+						</value>
+					</li>
+				</operations>
+			</li>
+
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="Human"]/comps</xpath> <!-- we add comp milkable here to make it milkable -->
+				<value>
+					<li Class="CompProperties_Milkable">
+						<milkDef>Chemfuel</milkDef>
+						<milkIntervalDays>1</milkIntervalDays>
+						<milkAmount>11</milkAmount>
+						<milkFemaleOnly>false</milkFemaleOnly>
+					</li>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAddModExtension"> <!-- optionally we can set our custom values about how much lactation periods should last and how many milk they should yield. By default it's 33% for first lifestage and 100% for first hediff and 50% for the second hediff. If you do not need to override these values, skip this patch completelly -->
+			
+				<xpath>/Defs/ThingDef[defName="Human"]</xpath>
+				<value>
+					<li Class="RealisticMilking.MilkingExtension">
+						<firstLactatingPeriodLifestageOverride>0.1</firstLactatingPeriodLifestageOverride>
+						<secondLactatingPeriodLifeStageOverride>0.9</secondLactatingPeriodLifeStageOverride>
+					</li>
+				</value>
+			</li>
+			
+		</operations>
+	</Operation>
+
+</Patch>
