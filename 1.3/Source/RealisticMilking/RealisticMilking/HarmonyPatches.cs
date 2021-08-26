@@ -66,6 +66,34 @@ namespace RealisticMilking
         }
     }
 
+    [HarmonyPatch(typeof(AnimalProductionUtility), "AnimalProductionStats")]
+    public class AnimalProductionStats_Patch
+    {
+        private static IEnumerable<StatDrawEntry> Postfix(ThingDef d, IEnumerable<StatDrawEntry> __result)
+        {
+            var extension = d.GetModExtension<MilkingExtension>();
+            if (extension != null && extension.excludeFromRealisticMilking)
+            {
+                foreach (var r in __result)
+                {
+                    yield return r;
+                }
+                yield break;
+            }
+            else
+            {
+                foreach (var stat in __result)
+                {
+                    var labelInt = Traverse.Create(stat).Field("labelInt").GetValue<string>();
+                    if (labelInt != "Stat_Animal_MilkValuePerYear".Translate() && labelInt != "Stat_Animal_MilkPerYear".Translate())
+                    {
+                        yield return stat;
+                    }
+                }
+            }
+        }
+    }
+
     [HarmonyPatch(typeof(Hediff_Pregnant), "DoBirthSpawn")]
     public class DoBirthSpawn_Patch
     {
