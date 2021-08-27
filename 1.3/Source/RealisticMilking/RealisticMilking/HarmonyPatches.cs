@@ -69,16 +69,15 @@ namespace RealisticMilking
     [HarmonyPatch(typeof(AnimalProductionUtility), "AnimalProductionStats")]
     public class AnimalProductionStats_Patch
     {
-        private static IEnumerable<StatDrawEntry> Postfix(ThingDef d, IEnumerable<StatDrawEntry> __result)
+        private static IEnumerable<StatDrawEntry> Postfix(IEnumerable<StatDrawEntry> __result, ThingDef d)
         {
-            var extension = d.GetModExtension<MilkingExtension>();
+            var extension = d?.GetModExtension<MilkingExtension>();
             if (extension != null && extension.excludeFromRealisticMilking)
             {
                 foreach (var r in __result)
                 {
                     yield return r;
                 }
-                yield break;
             }
             else
             {
